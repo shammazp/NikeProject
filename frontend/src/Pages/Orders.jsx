@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../Context/ShopContext'
 import Title from "../Components/Title"
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const Orders = () => {
 
@@ -27,12 +28,11 @@ const Orders = () => {
             allOrders.push(item)
           })
         })
-        console.log(allOrders)
         setOrderData(allOrders.reverse())
       }
 
     } catch (error) {
-      console.error("Error loading orders:", error);
+      toast.error(error.message)
     }
   }
 

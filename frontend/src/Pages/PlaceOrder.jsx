@@ -52,7 +52,7 @@ const PlaceOrder = () => {
       }
 
       switch (method) {
-        
+
         case 'cod':
           const responseCod = await axios.post(BackendUrl + "/api/orders/cod", orderData, { headers: { token } })
           if (responseCod.data.success) {
@@ -67,7 +67,7 @@ const PlaceOrder = () => {
         case 'stripe':
           const responseStripe = await axios.post(BackendUrl + "/api/orders/stripe", orderData, { headers: { token } })
           if (responseStripe.data.success) {
-            const {session_url}=responseStripe.data
+            const { session_url } = responseStripe.data
             window.location.replace(session_url)
           }
           else {
@@ -113,7 +113,7 @@ const PlaceOrder = () => {
           <input onChange={onChangeHandler} name='country' value={formData.country} className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='Country' required />
         </div>
 
-        <input onChange={onChangeHandler} name='phone' max={10} min={10} value={formData.phone} className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="number" placeholder='Phone' required />
+        <input onChange={onChangeHandler} name='phone' value={formData.phone} className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="number" placeholder='Phone' required />
 
       </div>
 

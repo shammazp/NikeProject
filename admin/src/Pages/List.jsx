@@ -4,7 +4,7 @@ import { BackendUrl, currency } from '../App'
 import { toast } from 'react-toastify'
 import { IoTrashBinOutline } from "react-icons/io5";
 
-const List = ({token}) => {
+const List = ({ token }) => {
 
   const [list, setList] = useState([])
 
@@ -22,14 +22,14 @@ const List = ({token}) => {
     }
   }
 
-  const removeProduct=async(id)=>{
+  const removeProduct = async (id) => {
     try {
-      const response=await axios.post(BackendUrl+"/api/product/remove",{id},{headers:{token}})
-      if(response.data.success){
+      const response = await axios.post(BackendUrl + "/api/product/remove", { id }, { headers: { token } })
+      if (response.data.success) {
         toast.success(response.data.message)
         await fetchList()
       }
-      else{
+      else {
         toast.error(response.data.message)
       }
     } catch (error) {
@@ -63,7 +63,7 @@ const List = ({token}) => {
                   <p>{value.name}</p>
                   <p className='ml-5'>{value.category}</p>
                   <p>{currency}{value.price}.00</p>
-                  <p><IoTrashBinOutline onClick={()=>removeProduct(value._id)} style={{ cursor: "pointer", fontSize: "20px" }} className='ml-12 md:text-center text-lg' /></p>
+                  <p><IoTrashBinOutline onClick={() => removeProduct(value._id)} style={{ cursor: "pointer", fontSize: "20px" }} className='ml-12 md:text-center text-lg' /></p>
                 </div>
               )
             })

@@ -7,7 +7,6 @@ import { IoIosArrowDropdown } from "react-icons/io";
 const Collections = () => {
 
   const { products, search, showSearch } = useContext(ShopContext)
-
   const [showFilter, setShowFilter] = useState(true)
   const [filterProducts, setFilterProducts] = useState([])
   const [category, setCategory] = useState([])
